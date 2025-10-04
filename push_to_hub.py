@@ -60,7 +60,7 @@ def push_model_to_hub(
     model_card_path = os.path.join(checkpoint_dir, "README.md")
     if not os.path.exists(model_card_path):
         # Read results from comparison report
-        report_path = f"comparison_report_{model_type}.txt"
+        report_path = f"analysis_results/comparison_report_{model_type}.txt"
         results = {}
         if os.path.exists(report_path):
             with open(report_path, "r") as f:

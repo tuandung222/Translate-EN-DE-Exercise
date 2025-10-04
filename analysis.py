@@ -425,13 +425,13 @@ def main():
     parser.add_argument(
         "--no_attn_report",
         type=str,
-        default="comparison_report_no_attention.txt",
+        default="analysis_results/comparison_report_no_attention.txt",
         help="Path to no attention model report",
     )
     parser.add_argument(
         "--attn_report",
         type=str,
-        default="comparison_report_attention.txt",
+        default="analysis_results/comparison_report_attention.txt",
         help="Path to attention model report",
     )
     parser.add_argument(

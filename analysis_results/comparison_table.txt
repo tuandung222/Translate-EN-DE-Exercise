@@ -8,8 +8,8 @@ Metric                    No Attention         With Attention       Improvement
 Test Set Metrics:
   Loss                    5.1840               4.2613               +17.80% (lower better)   
   Perplexity              178.4029             70.9048              +60.26% (lower better)   
-  Accuracy                0.0456               0.1495               +227.85% (higher better) 
-  Bleu                    0.0040               0.0223               +457.50% (higher better) 
+  Accuracy                0.0701               0.1574               +124.54% (higher better) 
+  Bleu                    0.0063               0.0237               +276.19% (higher better) 
 
 Validation Set Metrics:
   Loss                    0.0000               0.0000               N/A (baseline is 0)      

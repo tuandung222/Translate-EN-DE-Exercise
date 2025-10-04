@@ -65,8 +65,8 @@ fi
 echo ""
 echo "Running analysis"
 python analysis.py \
-    --no_attn_report comparison_report_no_attention.txt \
-    --attn_report comparison_report_attention.txt \
+    --no_attn_report analysis_results/comparison_report_no_attention.txt \
+    --attn_report analysis_results/comparison_report_attention.txt \
     --output_dir analysis_results
 
 echo ""
@@ -85,11 +85,11 @@ black *.py || echo "Black formatting completed (some files may already be format
 echo ""
 echo "Pushing to GitHub"
 git add .
-git add README.md REPORT_EXERCISE.md comparison_report*.txt analysis_results/
+git add README.md REPORT_EXERCISE.md analysis_results/
 git commit -m "Training complete: Update results
 
-- Model without attention: $(grep 'Test BLEU' comparison_report_no_attention.txt | awk '{print $4}')
-- Model with attention: $(grep 'Test BLEU' comparison_report_attention.txt | awk '{print $4}')
+- Model without attention: $(grep 'Test BLEU' analysis_results/comparison_report_no_attention.txt | awk '{print $4}')
+- Model with attention: $(grep 'Test BLEU' analysis_results/comparison_report_attention.txt | awk '{print $4}')
 - Auto-generated report and README
 - Code formatted with black" || echo "No changes to commit"
 

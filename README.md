@@ -40,11 +40,11 @@ This project includes realistic distributed training with experiment tracking:
 **Experiment Tracking (Weights & Biases):** <sub>**🔴 [AUTO-GENERATED]**</sub>
 
 - **Model without Attention:**
-  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/xj9mmuj7?nw=nwuser
+  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/esqmeu9i?nw=nwuser
   - Workspace: https://wandb.ai/Private_1/translation-de-en/workspace?nw=nwuser
 
 - **Model with Attention:**
-  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/c137rs4c?nw=nwuser
+  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/jtpchjkd?nw=nwuser
   - Workspace: https://wandb.ai/Private_1/translation-de-en/workspace?nw=nwuser
 
 - **Project Overview:** https://wandb.ai/Private_1/translation-de-en?nw=nwuser
@@ -67,17 +67,17 @@ This project includes realistic distributed training with experiment tracking:
 
 **Architecture:** 4-layer GRU encoder-decoder, no attention mechanism
 
-**Training:** 1 epochs, batch 1024, hidden 512, bfloat16 precision
+**Training:** 50 epochs, batch 1024, hidden 512, bfloat16 precision
 
 **Results:** <sub>**🔴 [AUTO-GENERATED]**</sub>
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.0456 |
-| BLEU | 0.0040 |
-| BERTScore (F1) | 0.6827 |
-| BLEURT | 0.0875 |
-| COMET | 0.3082 |
+| Accuracy | 0.0701 |
+| BLEU | 0.0063 |
+| BERTScore (F1) | 0.6952 |
+| BLEURT | 0.0999 |
+| COMET | 0.3208 |
 | Test Loss | 5.1840 |
 
 ---
@@ -92,11 +92,11 @@ This project includes realistic distributed training with experiment tracking:
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.1495 |
-| BLEU | 0.0223 |
+| Accuracy | 0.1574 |
+| BLEU | 0.0237 |
 | BERTScore (F1) | 0.7279 |
-| BLEURT | 0.2911 |
-| COMET | 0.3224 |
+| BLEURT | 0.2792 |
+| COMET | 0.3229 |
 | Test Loss | 4.2613 |
 
 ---
@@ -117,11 +117,11 @@ This project includes realistic distributed training with experiment tracking:
 
 | Metric | No Attention | With Attention | Improvement |
 |--------|--------------|----------------|-------------|
-| Accuracy | 0.0456 | 0.1495 | +227.9% |
-| BLEU | 0.0040 | 0.0223 | +457.5% |
-| BERTScore (F1) | 0.6827 | 0.7279 | +6.6% |
-| BLEURT | 0.0875 | 0.2911 | +232.7% |
-| COMET | 0.3082 | 0.3224 | +4.6% |
+| Accuracy | 0.0701 | 0.1574 | +124.5% |
+| BLEU | 0.0063 | 0.0237 | +276.2% |
+| BERTScore (F1) | 0.6952 | 0.7279 | +4.7% |
+| BLEURT | 0.0999 | 0.2792 | +179.5% |
+| COMET | 0.3208 | 0.3229 | +0.7% |
 | Test Loss | 5.1840 | 4.2613 | 17.8% reduction |
 
 <sub>**🔴 [AUTO-GENERATED]** **Analysis:**</sub>
@@ -132,18 +132,18 @@ Attention mechanism performs better on both accuracy and BLEU score.
 
 | Source (German) | Reference (English) | No Attention | With Attention |
 |----------------|--------------------|--------------|--------------------|
-| eine brille lasst dich viel kluger aussehen | wearing glasses makes you look more intellectual | tom is a | i have a lot of you |
-| denkst du ich bin blod | do you think im stupid | tom is a of the | i cant you want to be |
-| tom hat keine ahnung wer marys grovater ist | tom has no idea who marys grandfather is | tom is a | tom is a good of his |
-| er lief schneller als sein bruder | he ran faster than his brother did | i is a | he is a good of the car |
-| halt mal die hande still | keep your hands still | i you a | this is the of the of the house |
-| ich bin beschamt uber ihr verhalten | i am ashamed of your conduct | i i was a of | i want to you to do you |
-| ich bin so mude dass ich gleich ins bett gehe wenn ich nach hause komme | im so tired that im going to bed as soon as i get home | i cant to you | i dont have to be the of the same |
-| die neuen hauser haben eine einheitliche hohe | the new houses are of a uniform height | tom is a | the was a good of a day |
-| mein grovater gab mir ein geburtstagsgeschenk | my grandfather gave me a birthday present | tom is a | my is a lot of my room |
-| ihre haare sind zu lang | your hair is too long | i was a | he has a lot of the of my |
-| er nimmt geschenke von schulern an | he accepts gifts from students | tom is a | he was a little in the door |
-| wer ist sonst noch gegangen heute | who else is gone today | tom is a of | we have a good lot of the |
+| eine brille lasst dich viel kluger aussehen | wearing glasses makes you look more intellectual | tom is a | a lot of a lot of you |
+| denkst du ich bin blod | do you think im stupid | i have to the | i dont want to you |
+| tom hat keine ahnung wer marys grovater ist | tom has no idea who marys grandfather is | tom is a | tom is a good of his and mary |
+| er lief schneller als sein bruder | he ran faster than his brother did | i dont you to the | he was a lot of his car |
+| halt mal die hande still | keep your hands still | i dont to the | the is the of the door |
+| ich bin beschamt uber ihr verhalten | i am ashamed of your conduct | i dont to the | i have to you want to you |
+| ich bin so mude dass ich gleich ins bett gehe wenn ich nach hause komme | im so tired that im going to bed as soon as i get home | i have to the | i dont have to be a lot of the car |
+| die neuen hauser haben eine einheitliche hohe | the new houses are of a uniform height | i have to the | the is a lot of the of the day |
+| mein grovater gab mir ein geburtstagsgeschenk | my grandfather gave me a birthday present | i dont you to the | my is a lot of my car |
+| ihre haare sind zu lang | your hair is too long | i dont to the | he is a lot of of the |
+| er nimmt geschenke von schulern an | he accepts gifts from students | tom is a | he was a lot of the door |
+| wer ist sonst noch gegangen heute | who else is gone today | i dont you to the | this is a lot of the car |
 
 ---
 
@@ -212,14 +212,10 @@ translate-de-en/
 ├── Core Model & Data
 │   ├── model.py                      # Model architectures (Encoder, Decoder, Attention)
 │   ├── data_loader.py                # Data loading with HuggingFace datasets
-│   └── utils.py                      # General utilities (vocabulary, time, plotting)
-├── Training Modules (Modular Architecture)
-│   ├── train.py                      # Main training loop and orchestration
-│   ├── metrics.py                    # Evaluation metrics (BERTScore, BLEURT, COMET)
-│   ├── sampling.py                   # Text generation sampling (nucleus sampling)
-│   ├── evaluation.py                 # Model evaluation functions
-│   ├── model_utils.py                # Model utilities (parameter counting, size calculation)
-│   └── distributed_utils.py          # Distributed training utilities (DDP setup)
+│   └── utils.py                      # Unified utilities (metrics, sampling, distributed, etc.)
+├── Training & Evaluation
+│   ├── train.py                      # Main training loop with DDP and mixed precision
+│   └── evaluation.py                 # Model evaluation functions
 ├── Inference & Analysis
 │   ├── predict.py                    # Inference with nucleus sampling
 │   ├── analysis.py                   # Compare models and generate plots
@@ -227,24 +223,37 @@ translate-de-en/
 ├── Configuration & Scripts
 │   ├── config_no_attention.yaml      # Hyperparameters for model without attention
 │   ├── config_attention.yaml         # Hyperparameters for model with attention
-│   ├── distributed_run_full_pipeline.sh  # Main training pipeline script
-│   └── push_to_hub.py                # Upload models to HuggingFace Hub
+│   ├── distributed_run_full_pipeline.sh  # Main automated training pipeline
+│   ├── push_to_hub.py                # Upload models to HuggingFace Hub
+│   └── test_predict.sh               # Quick prediction test script
 ├── Dependencies & Configuration
 │   ├── requirements.txt              # Python dependencies
 │   └── pyproject.toml                # Black formatter configuration
-├── Data & Checkpoints
-│   ├── data/german-english.txt       # Dataset (auto-downloaded if missing)
-│   ├── checkpoints_*/                # Model checkpoints (ignored by git)
-│   └── analysis_results/             # Comparison tables, plots, examples
-└── Documentation
-    └── PROJECT_REFACTORING.md        # Refactoring documentation
+├── Data & Outputs
+│   ├── data/                         # Dataset directory (auto-downloaded)
+│   ├── checkpoints_attention/        # Attention model checkpoints + vocab
+│   ├── checkpoints_no_attention/     # No-attention model checkpoints + vocab
+│   └── analysis_results/             # All analysis outputs and reports
+│       ├── comparison_report_*.txt   # Detailed evaluation reports
+│       ├── comparison_table.txt      # Side-by-side metrics comparison
+│       ├── qualitative_comparison.txt # Translation examples comparison
+│       ├── metrics.json              # JSON metrics for programmatic access
+│       ├── validation_comparison.png # Validation curves plot
+│       └── plots/                    # Additional visualization plots
+├── Notebooks & Archive
+│   ├── notebooks/                    # Original Jupyter notebooks
+│   └── archive_docs/                 # Archived documentation files
+└── Cache & Temp
+    ├── dataset_cache/                # HuggingFace datasets cache
+    ├── wandb/                        # Weights & Biases logs
+    └── __pycache__/                  # Python bytecode cache
 ```
 
-**Modular Architecture Benefits:**
-- **Separation of Concerns:** Training, evaluation, and metrics are in separate modules
-- **Easier Maintenance:** Changes to one component don't affect others
-- **Better Reusability:** Modules can be imported independently
-- **Cleaner Code:** Each module has ~60-350 lines vs. original 1180-line train.py
+**Key Features:**
+- **Clean Organization:** All reports in `analysis_results/`, no clutter in root
+- **Unified Utilities:** All helper functions consolidated in `utils.py`
+- **Separate Checkpoints:** Each model type has its own checkpoint directory
+- **Automated Pipeline:** Single script runs training, evaluation, and documentation
 
 ---
 
@@ -304,10 +313,10 @@ This project uses **Residual Stacked GRU** with **Layer Normalization** to train
 
 **Test Set (final evaluation):**
 - Auto-regressive generation with nucleus sampling for qualitative results
-- Nucleus sampling parameters:
+- Nucleus sampling parameters (optimized for translation quality):
   - `top_k`: 20 (consider top-20 tokens)
   - `top_p`: 0.6 (nucleus threshold)
-  - `temperature`: 0.7 (sampling temperature)
+  - `temperature`: 0.3 (low temperature for more deterministic, accurate translations)
   - `repetition_penalty`: 1.05 (discourage repetition)
   - `max_length`: 64 (maximum generation length)
 - Limited to 512 instances for reasonable computation time

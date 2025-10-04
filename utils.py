@@ -121,7 +121,7 @@ def print_model_info(encoder, decoder, rank=0):
 
 
 def nucleus_sampling(
-    logits, top_k=20, top_p=0.6, temperature=0.7, repetition_penalty=1.05, generated_tokens=None
+    logits, top_k=20, top_p=0.6, temperature=0.3, repetition_penalty=1.05, generated_tokens=None
 ):
     """
     Apply nucleus (top-p) sampling with top-k filtering and repetition penalty.

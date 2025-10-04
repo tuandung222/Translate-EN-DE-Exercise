@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 
 def nucleus_sampling(
-    logits, top_k=20, top_p=0.6, temperature=0.7, repetition_penalty=1.05, generated_tokens=None
+    logits, top_k=20, top_p=0.6, temperature=0.3, repetition_penalty=1.05, generated_tokens=None
 ):
     """
     Apply nucleus (top-p) sampling with top-k filtering and repetition penalty.
@@ -114,7 +114,7 @@ def translate_sentence(
     use_nucleus=True,
     top_k=20,
     top_p=0.6,
-    temperature=0.7,
+    temperature=0.3,
     repetition_penalty=1.05,
 ):
     """Translate a single sentence with nucleus sampling."""
@@ -208,8 +208,18 @@ def main():
     parser.add_argument(
         "--repo_id", type=str, default="tuandunghcmut/Exercise-Translate-EN-DE-LLM-Course"
     )
-    parser.add_argument("--hidden_size", type=int, default=512)
-    parser.add_argument("--num_layers", type=int, default=4)  # Match config files
+    parser.add_argument(
+        "--hidden_size",
+        type=int,
+        default=None,
+        help="Hidden size (auto-detected from checkpoint if not specified)",
+    )
+    parser.add_argument(
+        "--num_layers",
+        type=int,
+        default=None,
+        help="Number of layers (auto-detected from checkpoint if not specified)",
+    )
     parser.add_argument("--max_length", type=int, default=64)
     parser.add_argument(
         "--use_residual",
@@ -228,7 +238,12 @@ def main():
     )
     parser.add_argument("--top_k", type=int, default=20, help="Top-k value for nucleus sampling")
     parser.add_argument("--top_p", type=float, default=0.6, help="Top-p value for nucleus sampling")
-    parser.add_argument("--temperature", type=float, default=0.7, help="Sampling temperature")
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=0.3,
+        help="Sampling temperature (lower=more deterministic, better for translation)",
+    )
     parser.add_argument(
         "--repetition_penalty",
         type=float,
@@ -249,7 +264,7 @@ def main():
 
     # Load checkpoint first to get vocabulary and model config
     print(f"Loading checkpoint from: {args.model_path}")
-    checkpoint = torch.load(args.model_path, map_location=device)
+    checkpoint = torch.load(args.model_path, map_location=device, weights_only=False)
 
     # Try to load vocabulary from checkpoint (if available)
     if "input_lang" in checkpoint and "output_lang" in checkpoint:
@@ -312,10 +327,10 @@ def main():
 
     # Auto-detect hidden_size and num_layers from checkpoint if not specified
     encoder_embedding_shape = checkpoint["encoder_state_dict"]["embedding.weight"].shape
-    if args.hidden_size == 256:  # Default value, auto-detect
+    if args.hidden_size is None:  # Auto-detect if not specified
         args.hidden_size = encoder_embedding_shape[1]
         print(f"✓ Auto-detected hidden_size: {args.hidden_size}")
-    if args.num_layers == 3:  # Default value, auto-detect
+    if args.num_layers is None:  # Auto-detect if not specified
         args.num_layers = len(
             [
                 k
@@ -326,10 +341,13 @@ def main():
         print(f"✓ Auto-detected num_layers: {args.num_layers}")
 
     # Create models (choose between standard or residual)
+    # Use dropout=0.1 to match training configuration (from config files)
+    dropout_p = 0.1
+
     if args.use_residual:
         print("Using Residual models with Layer Normalization")
         encoder = ResidualStackedGRUEncoder(
-            input_lang.n_words, args.hidden_size, num_layers=args.num_layers, dropout_p=0.1
+            input_lang.n_words, args.hidden_size, num_layers=args.num_layers, dropout_p=dropout_p
         ).to(device)
 
         if args.model_type == "attention":
@@ -337,17 +355,20 @@ def main():
                 args.hidden_size,
                 output_lang.n_words,
                 num_layers=args.num_layers,
-                dropout_p=0.3,
+                dropout_p=dropout_p,
                 max_length=args.max_length,
             ).to(device)
         else:
             decoder = ResidualStackedGRUDecoder(
-                args.hidden_size, output_lang.n_words, num_layers=args.num_layers, dropout_p=0.3
+                args.hidden_size,
+                output_lang.n_words,
+                num_layers=args.num_layers,
+                dropout_p=dropout_p,
             ).to(device)
     else:
         print("Using Standard stacked models")
         encoder = StackedGRUEncoder(
-            input_lang.n_words, args.hidden_size, num_layers=args.num_layers, dropout_p=0.1
+            input_lang.n_words, args.hidden_size, num_layers=args.num_layers, dropout_p=dropout_p
         ).to(device)
 
         if args.model_type == "attention":
@@ -355,12 +376,15 @@ def main():
                 args.hidden_size,
                 output_lang.n_words,
                 num_layers=args.num_layers,
-                dropout_p=0.1,
+                dropout_p=dropout_p,
                 max_length=args.max_length,
             ).to(device)
         else:
             decoder = StackedGRUDecoder(
-                args.hidden_size, output_lang.n_words, num_layers=args.num_layers, dropout_p=0.1
+                args.hidden_size,
+                output_lang.n_words,
+                num_layers=args.num_layers,
+                dropout_p=dropout_p,
             ).to(device)
 
     # Load model weights (checkpoint already loaded above)

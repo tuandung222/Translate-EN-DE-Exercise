@@ -219,7 +219,7 @@ def evaluate_metrics(
     Evaluate model with BLEU and accuracy metrics using auto-regressive generation with nucleus sampling.
 
     Limited to 512 samples for fast computation. Uses nucleus sampling with:
-    - top_k=20, top_p=0.6, temperature=0.7, repetition_penalty=1.05
+    - top_k=20, top_p=0.6, temperature=0.3, repetition_penalty=1.05
     """
     encoder.eval()
     decoder.eval()
@@ -278,12 +278,12 @@ def evaluate_metrics(
                         )
 
                         logits = decoder_output[0, -1, :]
-                        # Use nucleus sampling: top_k=20, top_p=0.6, temperature=0.7, repetition_penalty=1.05
+                        # Use nucleus sampling: top_k=20, top_p=0.6, temperature=0.3, repetition_penalty=1.05
                         idx = nucleus_sampling(
                             logits,
                             top_k=20,
                             top_p=0.6,
-                            temperature=0.7,
+                            temperature=0.3,
                             repetition_penalty=1.05,
                             generated_tokens=generated_token_ids,
                         )

@@ -9,7 +9,7 @@ max_length: 64
 use_residual: true  # Use residual connections with layer normalization
 
 # Training configuration
-n_epochs: 1
+n_epochs: 50
 batch_size: 1024    
 learning_rate: 0.0002
 max_grad_norm: 1.25

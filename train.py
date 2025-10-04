@@ -577,7 +577,9 @@ def main():
             amp_dtype=amp_dtype_torch,
         )
 
-        report_name = f"comparison_report_{args.model_type}.txt"
+        # Ensure analysis_results directory exists
+        os.makedirs("analysis_results", exist_ok=True)
+        report_name = f"analysis_results/comparison_report_{args.model_type}.txt"
         generate_report(
             args.model_type,
             test_accuracy,

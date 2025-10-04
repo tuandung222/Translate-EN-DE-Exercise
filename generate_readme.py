@@ -145,12 +145,14 @@ def generate_readme():
     config_attn = load_config("config_attention.yaml")
 
     # Load results if available
-    results_no_attn = load_results("comparison_report_no_attention.txt")
-    results_attn = load_results("comparison_report_attention.txt")
+    results_no_attn = load_results("analysis_results/comparison_report_no_attention.txt")
+    results_attn = load_results("analysis_results/comparison_report_attention.txt")
 
     # Get qualitative examples
-    examples_no_attn = get_qualitative_examples("comparison_report_no_attention.txt", 12)
-    examples_attn = get_qualitative_examples("comparison_report_attention.txt", 12)
+    examples_no_attn = get_qualitative_examples(
+        "analysis_results/comparison_report_no_attention.txt", 12
+    )
+    examples_attn = get_qualitative_examples("analysis_results/comparison_report_attention.txt", 12)
 
     # Get wandb info
     wandb_info = get_wandb_info()
@@ -477,14 +479,10 @@ translate-de-en/
 ├── Core Model & Data
 │   ├── model.py                      # Model architectures (Encoder, Decoder, Attention)
 │   ├── data_loader.py                # Data loading with HuggingFace datasets
-│   └── utils.py                      # General utilities (vocabulary, time, plotting)
-├── Training Modules (Modular Architecture)
-│   ├── train.py                      # Main training loop and orchestration
-│   ├── metrics.py                    # Evaluation metrics (BERTScore, BLEURT, COMET)
-│   ├── sampling.py                   # Text generation sampling (nucleus sampling)
-│   ├── evaluation.py                 # Model evaluation functions
-│   ├── model_utils.py                # Model utilities (parameter counting, size calculation)
-│   └── distributed_utils.py          # Distributed training utilities (DDP setup)
+│   └── utils.py                      # Unified utilities (metrics, sampling, distributed, etc.)
+├── Training & Evaluation
+│   ├── train.py                      # Main training loop with DDP and mixed precision
+│   └── evaluation.py                 # Model evaluation functions
 ├── Inference & Analysis
 │   ├── predict.py                    # Inference with nucleus sampling
 │   ├── analysis.py                   # Compare models and generate plots
@@ -492,24 +490,37 @@ translate-de-en/
 ├── Configuration & Scripts
 │   ├── config_no_attention.yaml      # Hyperparameters for model without attention
 │   ├── config_attention.yaml         # Hyperparameters for model with attention
-│   ├── distributed_run_full_pipeline.sh  # Main training pipeline script
-│   └── push_to_hub.py                # Upload models to HuggingFace Hub
+│   ├── distributed_run_full_pipeline.sh  # Main automated training pipeline
+│   ├── push_to_hub.py                # Upload models to HuggingFace Hub
+│   └── test_predict.sh               # Quick prediction test script
 ├── Dependencies & Configuration
 │   ├── requirements.txt              # Python dependencies
 │   └── pyproject.toml                # Black formatter configuration
-├── Data & Checkpoints
-│   ├── data/german-english.txt       # Dataset (auto-downloaded if missing)
-│   ├── checkpoints_*/                # Model checkpoints (ignored by git)
-│   └── analysis_results/             # Comparison tables, plots, examples
-└── Documentation
-    └── PROJECT_REFACTORING.md        # Refactoring documentation
+├── Data & Outputs
+│   ├── data/                         # Dataset directory (auto-downloaded)
+│   ├── checkpoints_attention/        # Attention model checkpoints + vocab
+│   ├── checkpoints_no_attention/     # No-attention model checkpoints + vocab
+│   └── analysis_results/             # All analysis outputs and reports
+│       ├── comparison_report_*.txt   # Detailed evaluation reports
+│       ├── comparison_table.txt      # Side-by-side metrics comparison
+│       ├── qualitative_comparison.txt # Translation examples comparison
+│       ├── metrics.json              # JSON metrics for programmatic access
+│       ├── validation_comparison.png # Validation curves plot
+│       └── plots/                    # Additional visualization plots
+├── Notebooks & Archive
+│   ├── notebooks/                    # Original Jupyter notebooks
+│   └── archive_docs/                 # Archived documentation files
+└── Cache & Temp
+    ├── dataset_cache/                # HuggingFace datasets cache
+    ├── wandb/                        # Weights & Biases logs
+    └── __pycache__/                  # Python bytecode cache
 ```
 
-**Modular Architecture Benefits:**
-- **Separation of Concerns:** Training, evaluation, and metrics are in separate modules
-- **Easier Maintenance:** Changes to one component don't affect others
-- **Better Reusability:** Modules can be imported independently
-- **Cleaner Code:** Each module has ~60-350 lines vs. original 1180-line train.py
+**Key Features:**
+- **Clean Organization:** All reports in `analysis_results/`, no clutter in root
+- **Unified Utilities:** All helper functions consolidated in `utils.py`
+- **Separate Checkpoints:** Each model type has its own checkpoint directory
+- **Automated Pipeline:** Single script runs training, evaluation, and documentation
 
 ---
 
@@ -571,10 +582,10 @@ This project uses **Residual Stacked GRU** with **Layer Normalization** to train
 
 **Test Set (final evaluation):**
 - Auto-regressive generation with nucleus sampling for qualitative results
-- Nucleus sampling parameters:
+- Nucleus sampling parameters (optimized for translation quality):
   - `top_k`: 20 (consider top-20 tokens)
   - `top_p`: 0.6 (nucleus threshold)
-  - `temperature`: 0.7 (sampling temperature)
+  - `temperature`: 0.3 (low temperature for more deterministic, accurate translations)
   - `repetition_penalty`: 1.05 (discourage repetition)
   - `max_length`: 64 (maximum generation length)
 - Limited to 512 instances for reasonable computation time

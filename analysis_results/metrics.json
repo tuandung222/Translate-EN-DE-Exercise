@@ -2,13 +2,13 @@
   "no_attention": {
     "loss": 5.184,
     "perplexity": 178.4029,
-    "accuracy": 0.0456,
-    "bleu": 0.004
+    "accuracy": 0.0701,
+    "bleu": 0.0063
   },
   "with_attention": {
     "loss": 4.2613,
     "perplexity": 70.9048,
-    "accuracy": 0.1495,
-    "bleu": 0.0223
+    "accuracy": 0.1574,
+    "bleu": 0.0237
   }
 }
