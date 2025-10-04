@@ -6,10 +6,10 @@ Metric                    No Attention         With Attention       Improvement
 ------------------------------------------------------------------------------------------
 
 Test Set Metrics:
-  Loss                    5.1840               4.2613               +17.80% (lower better)   
-  Perplexity              178.4029             70.9048              +60.26% (lower better)   
-  Accuracy                0.0701               0.1574               +124.54% (higher better) 
-  Bleu                    0.0063               0.0237               +276.19% (higher better) 
+  Loss                    1.6161               1.5050               +6.87% (lower better)    
+  Perplexity              5.0332               4.5041               +10.51% (lower better)   
+  Accuracy                0.4962               0.4948               -0.28% (higher better)   
+  Bleu                    0.3984               0.4186               +5.07% (higher better)   
 
 Validation Set Metrics:
   Loss                    0.0000               0.0000               N/A (baseline is 0)      
@@ -20,7 +20,7 @@ Validation Set Metrics:
 Summary:
 --------------------------------------------------------------------------------
 ✓ Attention mechanism improves BLEU score
-✓ Attention mechanism improves accuracy
+✗ Attention mechanism does not improve accuracy
 ✓ Attention mechanism reduces loss
 
 ================================================================================

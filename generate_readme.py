@@ -67,6 +67,51 @@ def get_qualitative_examples(report_path, num_examples=5):
     return examples
 
 
+def get_model_size_info(checkpoint_path):
+    """
+    Calculate model size from checkpoint.
+
+    Returns dict with:
+    - total_params: total number of parameters
+    - size_fp16_mb: size in float16/bfloat16 (MB)
+    - size_fp32_mb: size in float32 (MB)
+    """
+    if not os.path.exists(checkpoint_path):
+        return None
+
+    try:
+        import torch
+
+        checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+
+        total_params = 0
+
+        # Count encoder parameters
+        if "encoder_state_dict" in checkpoint:
+            for param_tensor in checkpoint["encoder_state_dict"].values():
+                total_params += param_tensor.numel()
+
+        # Count decoder parameters
+        if "decoder_state_dict" in checkpoint:
+            for param_tensor in checkpoint["decoder_state_dict"].values():
+                total_params += param_tensor.numel()
+
+        # Calculate sizes
+        # float16/bfloat16: 2 bytes per parameter
+        # float32: 4 bytes per parameter
+        size_fp16_mb = (total_params * 2) / (1024 * 1024)
+        size_fp32_mb = (total_params * 4) / (1024 * 1024)
+
+        return {
+            "total_params": total_params,
+            "size_fp16_mb": size_fp16_mb,
+            "size_fp32_mb": size_fp32_mb,
+        }
+    except Exception as e:
+        print(f"Warning: Could not load model size from {checkpoint_path}: {e}")
+        return None
+
+
 def get_wandb_info():
     """Extract wandb run info from local wandb runs by reading config and constructing URLs."""
     import glob
@@ -157,6 +202,10 @@ def generate_readme():
     # Get wandb info
     wandb_info = get_wandb_info()
 
+    # Get model size info
+    model_size_no_attn = get_model_size_info("checkpoints_no_attention/best_model.pth")
+    model_size_attn = get_model_size_info("checkpoints_attention/best_model.pth")
+
     readme_content = f"""# German→English Translation: Attention vs. Non-Attention Models
 
 > **Note:** The dataset is quite large for T4 GPU training. To achieve acceptable translation results efficiently, the original notebooks have been scriptized into production-ready scripts supporting Distributed Data Parallel (DDP) training. 
@@ -173,8 +222,9 @@ def generate_readme():
 2. [Lab Assignment Results](#2-lab-assignment-results)
    - 2.1 [Model without Attention](#21-model-without-attention)
    - 2.2 [Model with Attention](#22-model-with-attention)
-   - 2.3 [Validation Curves](#23-validation-curves)
-   - 2.4 [Comparison and Analysis](#24-comparison-and-analysis)
+   - 2.3 [Model Size](#23-model-size)
+   - 2.4 [Validation Curves](#24-validation-curves)
+   - 2.5 [Comparison and Analysis](#25-comparison-and-analysis)
 3. [How to Run (For Reviewers)](#3-how-to-run-for-reviewers)
    - 3.1 [Evaluate Pre-trained Models](#31-evaluate-pre-trained-models-from-hugging-face-hub)
    - 3.2 [Full Training Pipeline](#32-full-training-pipeline)
@@ -299,7 +349,31 @@ This project includes realistic distributed training with experiment tracking:
     readme_content += """
 ---
 
-### 2.3 Validation Curves
+### 2.3 Model Size
+
+<sub>**🔴 [AUTO-GENERATED]** Model sizes calculated from checkpoints:</sub>
+
+"""
+
+    # Add model size comparison table
+    if model_size_no_attn and model_size_attn:
+        readme_content += f"""| Model | Parameters | Size (bfloat16) | Size (float32) |
+|-------|------------|-----------------|----------------|
+| No Attention | {model_size_no_attn['total_params']:,} | {model_size_no_attn['size_fp16_mb']:.2f} MB | {model_size_no_attn['size_fp32_mb']:.2f} MB |
+| With Attention | {model_size_attn['total_params']:,} | {model_size_attn['size_fp16_mb']:.2f} MB | {model_size_attn['size_fp32_mb']:.2f} MB |
+
+**Notes:**
+- Training uses **bfloat16** mixed precision for efficiency
+- Parameter count includes encoder + decoder weights
+- Attention model has additional parameters for attention mechanism (~{((model_size_attn['total_params'] - model_size_no_attn['total_params']) / model_size_no_attn['total_params'] * 100):.1f}% more)
+"""
+    else:
+        readme_content += "\n*Model size information will be available after training.*\n"
+
+    readme_content += """
+---
+
+### 2.4 Validation Curves
 
 <sub>**🔴 [AUTO-GENERATED]** Training progress comparison showing both models:</sub>
 
@@ -309,7 +383,7 @@ This project includes realistic distributed training with experiment tracking:
 
 ---
 
-### 2.4 Comparison and Analysis
+### 2.5 Comparison and Analysis
 
 **Quantitative Comparison:** <sub>**🔴 [AUTO-GENERATED]**</sub>
 """

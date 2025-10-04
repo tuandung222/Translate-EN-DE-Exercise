@@ -6,140 +6,140 @@ Example 1:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  eine brille lasst dich viel kluger aussehen
 Reference:        wearing glasses makes you look more intellectual
-No Attention:     tom is a
-With Attention:   a lot of a lot of you
+No Attention:     a lot of glasses are you happy when youre a sound
+With Attention:   glasses you are wearing much smarter looks
 
 Example 2:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  denkst du ich bin blod
 Reference:        do you think im stupid
-No Attention:     i have to the
-With Attention:   i dont want to you
+No Attention:     do you think im stupid
+With Attention:   do you think im stupid
 
 Example 3:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  tom hat keine ahnung wer marys grovater ist
 Reference:        tom has no idea who marys grandfather is
-No Attention:     tom is a
-With Attention:   tom is a good of his and mary
+No Attention:     tom has no idea who marys grandfather is
+With Attention:   tom has no idea who marys grandfather is
 
 Example 4:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  er lief schneller als sein bruder
 Reference:        he ran faster than his brother did
-No Attention:     i dont you to the
-With Attention:   he was a lot of his car
+No Attention:     he ran faster than his brother
+With Attention:   he ran faster than his brother
 
 Example 5:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  halt mal die hande still
 Reference:        keep your hands still
-No Attention:     i dont to the
-With Attention:   the is the of the door
+No Attention:     keep hands quiet
+With Attention:   keep your hands shut up
 
 Example 6:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  ich bin beschamt uber ihr verhalten
 Reference:        i am ashamed of your conduct
-No Attention:     i dont to the
-With Attention:   i have to you want to you
+No Attention:     i am ashamed of your conduct
+With Attention:   im ashamed of your behavior
 
 Example 7:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  ich bin so mude dass ich gleich ins bett gehe wenn ich nach hause komme
 Reference:        im so tired that im going to bed as soon as i get home
-No Attention:     i have to the
-With Attention:   i dont have to be a lot of the car
+No Attention:     im so tired i will go to bed at home as soon
+With Attention:   im so tired i will go to bed next time ill come back home
 
 Example 8:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  die neuen hauser haben eine einheitliche hohe
 Reference:        the new houses are of a uniform height
-No Attention:     i have to the
-With Attention:   the is a lot of the of the day
+No Attention:     the new houses have a large vocabulary
+With Attention:   the new houses have a female amount of new houses
 
 Example 9:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  mein grovater gab mir ein geburtstagsgeschenk
 Reference:        my grandfather gave me a birthday present
-No Attention:     i dont you to the
-With Attention:   my is a lot of my car
+No Attention:     my grandfather gave me a birthday present
+With Attention:   my grandfather gave me a present present
 
 Example 10:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  ihre haare sind zu lang
 Reference:        your hair is too long
-No Attention:     i dont to the
-With Attention:   he is a lot of of the
+No Attention:     her hair is too long
+With Attention:   her hair is too long
 
 Example 11:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  er nimmt geschenke von schulern an
 Reference:        he accepts gifts from students
-No Attention:     tom is a
-With Attention:   he was a lot of the door
+No Attention:     he takes gifts from students of their problems
+With Attention:   he takes gifts from students
 
 Example 12:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  wer ist sonst noch gegangen heute
 Reference:        who else is gone today
-No Attention:     i dont you to the
-With Attention:   this is a lot of the car
+No Attention:     who else was today
+With Attention:   who else has gone today
 
 Example 13:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  er wird fruher oder spater ein guter anwalt sein
 Reference:        hell make a good lawyer sooner or later
-No Attention:     i have to the
-With Attention:   he is a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot
+No Attention:     he will be able to get a good job or a lawyer
+With Attention:   he will be a good sooner or later
 
 Example 14:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  wann hast du das letzte mal deine ohrringe getragen
 Reference:        when was the last time you wore your earrings
-No Attention:     i have to the
-With Attention:   she was a lot of the of the of the
+No Attention:     when was the last time you brushed your teeth
+With Attention:   when was the last time you wore your earrings
 
 Example 15:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  konntet ihr mir diese kiste tragen
 Reference:        could you carry this box for me please
-No Attention:     i dont you to the
-With Attention:   you have to be a lot of the
+No Attention:     could you carry out this box for me
+With Attention:   could you carry this box for me
 
 Example 16:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  ich verstehe nicht warum niemand mehr hierher kommt
 Reference:        i cant figure out why nobody comes here anymore
-No Attention:     i have to the
-With Attention:   i dont know what i dont know
+No Attention:     i dont understand why no one here comes anymore
+With Attention:   i dont understand why no one here comes here anymore
 
 Example 17:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  ich habe dir viele dinge zu erzahlen
 Reference:        i have a lot of things to tell you
-No Attention:     i have to the
-With Attention:   i have to you have to you
+No Attention:     i have a lot of things to tell you
+With Attention:   i have many things to tell you
 
 Example 18:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  tom ist sicherlich uber dreiig
 Reference:        tom is certainly over thirty
-No Attention:     tom is a
-With Attention:   tom is a lot of the
+No Attention:     tom is certainly over thirty
+With Attention:   tom is certainly about thirty
 
 Example 19:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  ich mag komodien im theater anzuschauen
 Reference:        i like to see comedy in the theater
-No Attention:     i dont you to the
-With Attention:   i dont want to the of the car
+No Attention:     i like to talk about the theater in the evening
+With Attention:   i like comedies at the theater
 
 Example 20:
 ------------------------------------------------------------------------------------------------------------------------
 Source (German):  naturlich ich fuhle mich schuldig
 Reference:        of course i feel guilty
-No Attention:     i dont to the
-With Attention:   i dont want to me
+No Attention:     i feel guilty of it
+With Attention:   of course i feel guilty
 
 ========================================================================================================================

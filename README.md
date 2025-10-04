@@ -14,8 +14,9 @@
 2. [Lab Assignment Results](#2-lab-assignment-results)
    - 2.1 [Model without Attention](#21-model-without-attention)
    - 2.2 [Model with Attention](#22-model-with-attention)
-   - 2.3 [Validation Curves](#23-validation-curves)
-   - 2.4 [Comparison and Analysis](#24-comparison-and-analysis)
+   - 2.3 [Model Size](#23-model-size)
+   - 2.4 [Validation Curves](#24-validation-curves)
+   - 2.5 [Comparison and Analysis](#25-comparison-and-analysis)
 3. [How to Run (For Reviewers)](#3-how-to-run-for-reviewers)
    - 3.1 [Evaluate Pre-trained Models](#31-evaluate-pre-trained-models-from-hugging-face-hub)
    - 3.2 [Full Training Pipeline](#32-full-training-pipeline)
@@ -40,11 +41,11 @@ This project includes realistic distributed training with experiment tracking:
 **Experiment Tracking (Weights & Biases):** <sub>**🔴 [AUTO-GENERATED]**</sub>
 
 - **Model without Attention:**
-  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/esqmeu9i?nw=nwuser
+  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/565lcga7?nw=nwuser
   - Workspace: https://wandb.ai/Private_1/translation-de-en/workspace?nw=nwuser
 
 - **Model with Attention:**
-  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/jtpchjkd?nw=nwuser
+  - Dashboard: https://wandb.ai/Private_1/translation-de-en/runs/hi9r00es?nw=nwuser
   - Workspace: https://wandb.ai/Private_1/translation-de-en/workspace?nw=nwuser
 
 - **Project Overview:** https://wandb.ai/Private_1/translation-de-en?nw=nwuser
@@ -73,12 +74,12 @@ This project includes realistic distributed training with experiment tracking:
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.0701 |
-| BLEU | 0.0063 |
-| BERTScore (F1) | 0.6952 |
-| BLEURT | 0.0999 |
-| COMET | 0.3208 |
-| Test Loss | 5.1840 |
+| Accuracy | 0.4962 |
+| BLEU | 0.3984 |
+| BERTScore (F1) | 0.8948 |
+| BLEURT | 0.6777 |
+| COMET | 0.6457 |
+| Test Loss | 1.6161 |
 
 ---
 
@@ -86,22 +87,38 @@ This project includes realistic distributed training with experiment tracking:
 
 **Architecture:** 4-layer GRU encoder-decoder with Bahdanau attention
 
-**Training:** 1 epochs, batch 1024, hidden 512, bfloat16 precision
+**Training:** 50 epochs, batch 1024, hidden 512, bfloat16 precision
 
 **Results:** <sub>**🔴 [AUTO-GENERATED]**</sub>
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.1574 |
-| BLEU | 0.0237 |
-| BERTScore (F1) | 0.7279 |
-| BLEURT | 0.2792 |
-| COMET | 0.3229 |
-| Test Loss | 4.2613 |
+| Accuracy | 0.4948 |
+| BLEU | 0.4186 |
+| BERTScore (F1) | 0.9056 |
+| BLEURT | 0.6843 |
+| COMET | 0.6895 |
+| Test Loss | 1.5050 |
 
 ---
 
-### 2.3 Validation Curves
+### 2.3 Model Size
+
+<sub>**🔴 [AUTO-GENERATED]** Model sizes calculated from checkpoints:</sub>
+
+| Model | Parameters | Size (bfloat16) | Size (float32) |
+|-------|------------|-----------------|----------------|
+| No Attention | 43,680,770 | 83.31 MB | 166.63 MB |
+| With Attention | 44,468,227 | 84.82 MB | 169.63 MB |
+
+**Notes:**
+- Training uses **bfloat16** mixed precision for efficiency
+- Parameter count includes encoder + decoder weights
+- Attention model has additional parameters for attention mechanism (~1.8% more)
+
+---
+
+### 2.4 Validation Curves
 
 <sub>**🔴 [AUTO-GENERATED]** Training progress comparison showing both models:</sub>
 
@@ -111,39 +128,39 @@ This project includes realistic distributed training with experiment tracking:
 
 ---
 
-### 2.4 Comparison and Analysis
+### 2.5 Comparison and Analysis
 
 **Quantitative Comparison:** <sub>**🔴 [AUTO-GENERATED]**</sub>
 
 | Metric | No Attention | With Attention | Improvement |
 |--------|--------------|----------------|-------------|
-| Accuracy | 0.0701 | 0.1574 | +124.5% |
-| BLEU | 0.0063 | 0.0237 | +276.2% |
-| BERTScore (F1) | 0.6952 | 0.7279 | +4.7% |
-| BLEURT | 0.0999 | 0.2792 | +179.5% |
-| COMET | 0.3208 | 0.3229 | +0.7% |
-| Test Loss | 5.1840 | 4.2613 | 17.8% reduction |
+| Accuracy | 0.4962 | 0.4948 | +-0.3% |
+| BLEU | 0.3984 | 0.4186 | +5.1% |
+| BERTScore (F1) | 0.8948 | 0.9056 | +1.2% |
+| BLEURT | 0.6777 | 0.6843 | +1.0% |
+| COMET | 0.6457 | 0.6895 | +6.8% |
+| Test Loss | 1.6161 | 1.5050 | 6.9% reduction |
 
 <sub>**🔴 [AUTO-GENERATED]** **Analysis:**</sub>
 
-Attention mechanism performs better on both accuracy and BLEU score.
+Attention mechanism shows improvement in translation quality.
 
 <sub>**🔴 [AUTO-GENERATED]** **Qualitative Examples:**</sub>
 
 | Source (German) | Reference (English) | No Attention | With Attention |
 |----------------|--------------------|--------------|--------------------|
-| eine brille lasst dich viel kluger aussehen | wearing glasses makes you look more intellectual | tom is a | a lot of a lot of you |
-| denkst du ich bin blod | do you think im stupid | i have to the | i dont want to you |
-| tom hat keine ahnung wer marys grovater ist | tom has no idea who marys grandfather is | tom is a | tom is a good of his and mary |
-| er lief schneller als sein bruder | he ran faster than his brother did | i dont you to the | he was a lot of his car |
-| halt mal die hande still | keep your hands still | i dont to the | the is the of the door |
-| ich bin beschamt uber ihr verhalten | i am ashamed of your conduct | i dont to the | i have to you want to you |
-| ich bin so mude dass ich gleich ins bett gehe wenn ich nach hause komme | im so tired that im going to bed as soon as i get home | i have to the | i dont have to be a lot of the car |
-| die neuen hauser haben eine einheitliche hohe | the new houses are of a uniform height | i have to the | the is a lot of the of the day |
-| mein grovater gab mir ein geburtstagsgeschenk | my grandfather gave me a birthday present | i dont you to the | my is a lot of my car |
-| ihre haare sind zu lang | your hair is too long | i dont to the | he is a lot of of the |
-| er nimmt geschenke von schulern an | he accepts gifts from students | tom is a | he was a lot of the door |
-| wer ist sonst noch gegangen heute | who else is gone today | i dont you to the | this is a lot of the car |
+| eine brille lasst dich viel kluger aussehen | wearing glasses makes you look more intellectual | a lot of glasses are you happy when youre a sound | glasses you are wearing much smarter looks |
+| denkst du ich bin blod | do you think im stupid | do you think im stupid | do you think im stupid |
+| tom hat keine ahnung wer marys grovater ist | tom has no idea who marys grandfather is | tom has no idea who marys grandfather is | tom has no idea who marys grandfather is |
+| er lief schneller als sein bruder | he ran faster than his brother did | he ran faster than his brother | he ran faster than his brother |
+| halt mal die hande still | keep your hands still | keep hands quiet | keep your hands shut up |
+| ich bin beschamt uber ihr verhalten | i am ashamed of your conduct | i am ashamed of your conduct | im ashamed of your behavior |
+| ich bin so mude dass ich gleich ins bett gehe wenn ich nach hause komme | im so tired that im going to bed as soon as i get home | im so tired i will go to bed at home as soon | im so tired i will go to bed next time ill come back home |
+| die neuen hauser haben eine einheitliche hohe | the new houses are of a uniform height | the new houses have a large vocabulary | the new houses have a female amount of new houses |
+| mein grovater gab mir ein geburtstagsgeschenk | my grandfather gave me a birthday present | my grandfather gave me a birthday present | my grandfather gave me a present present |
+| ihre haare sind zu lang | your hair is too long | her hair is too long | her hair is too long |
+| er nimmt geschenke von schulern an | he accepts gifts from students | he takes gifts from students of their problems | he takes gifts from students |
+| wer ist sonst noch gegangen heute | who else is gone today | who else was today | who else has gone today |
 
 ---
 
@@ -346,7 +363,7 @@ num_layers: 4                     # Number of GRU layers
 dropout: 0.1                       # Dropout probability
 max_length: 64                    # Max sequence length
 
-n_epochs: 1                        # Training epochs
+n_epochs: 50                        # Training epochs
 batch_size: 1024                    # Batch size (per GPU)
 learning_rate: 0.0002             # Initial learning rate
 max_grad_norm: 1.25                  # Gradient clipping
