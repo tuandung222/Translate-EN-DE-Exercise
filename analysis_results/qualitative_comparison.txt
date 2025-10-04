@@ -1,0 +1,145 @@
+========================================================================================================================
+QUALITATIVE COMPARISON: 20 Translation Examples (German → English)
+========================================================================================================================
+
+Example 1:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  eine brille lasst dich viel kluger aussehen
+Reference:        wearing glasses makes you look more intellectual
+No Attention:     tom is a
+With Attention:   i have a lot of you
+
+Example 2:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  denkst du ich bin blod
+Reference:        do you think im stupid
+No Attention:     tom is a of the
+With Attention:   i cant you want to be
+
+Example 3:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  tom hat keine ahnung wer marys grovater ist
+Reference:        tom has no idea who marys grandfather is
+No Attention:     tom is a
+With Attention:   tom is a good of his
+
+Example 4:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  er lief schneller als sein bruder
+Reference:        he ran faster than his brother did
+No Attention:     i is a
+With Attention:   he is a good of the car
+
+Example 5:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  halt mal die hande still
+Reference:        keep your hands still
+No Attention:     i you a
+With Attention:   this is the of the of the house
+
+Example 6:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  ich bin beschamt uber ihr verhalten
+Reference:        i am ashamed of your conduct
+No Attention:     i i was a of
+With Attention:   i want to you to do you
+
+Example 7:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  ich bin so mude dass ich gleich ins bett gehe wenn ich nach hause komme
+Reference:        im so tired that im going to bed as soon as i get home
+No Attention:     i cant to you
+With Attention:   i dont have to be the of the same
+
+Example 8:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  die neuen hauser haben eine einheitliche hohe
+Reference:        the new houses are of a uniform height
+No Attention:     tom is a
+With Attention:   the was a good of a day
+
+Example 9:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  mein grovater gab mir ein geburtstagsgeschenk
+Reference:        my grandfather gave me a birthday present
+No Attention:     tom is a
+With Attention:   my is a lot of my room
+
+Example 10:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  ihre haare sind zu lang
+Reference:        your hair is too long
+No Attention:     i was a
+With Attention:   he has a lot of the of my
+
+Example 11:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  er nimmt geschenke von schulern an
+Reference:        he accepts gifts from students
+No Attention:     tom is a
+With Attention:   he was a little in the door
+
+Example 12:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  wer ist sonst noch gegangen heute
+Reference:        who else is gone today
+No Attention:     tom is a of
+With Attention:   we have a good lot of the
+
+Example 13:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  er wird fruher oder spater ein guter anwalt sein
+Reference:        hell make a good lawyer sooner or later
+No Attention:     i dont you to the
+With Attention:   he was a good good of my house
+
+Example 14:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  wann hast du das letzte mal deine ohrringe getragen
+Reference:        when was the last time you wore your earrings
+No Attention:     tom is a
+With Attention:   he has a lot of the time
+
+Example 15:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  konntet ihr mir diese kiste tragen
+Reference:        could you carry this box for me please
+No Attention:     tom is a
+With Attention:   you want to be to me
+
+Example 16:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  ich verstehe nicht warum niemand mehr hierher kommt
+Reference:        i cant figure out why nobody comes here anymore
+No Attention:     i was a
+With Attention:   i dont know you know tom
+
+Example 17:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  ich habe dir viele dinge zu erzahlen
+Reference:        i have a lot of things to tell you
+No Attention:     i you have to a
+With Attention:   i dont want to you to do you
+
+Example 18:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  tom ist sicherlich uber dreiig
+Reference:        tom is certainly over thirty
+No Attention:     tom is a
+With Attention:   tom is the door
+
+Example 19:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  ich mag komodien im theater anzuschauen
+Reference:        i like to see comedy in the theater
+No Attention:     i have to to the
+With Attention:   i dont know the in the door
+
+Example 20:
+------------------------------------------------------------------------------------------------------------------------
+Source (German):  naturlich ich fuhle mich schuldig
+Reference:        of course i feel guilty
+No Attention:     i dont have to you
+With Attention:   i want to me
+
+========================================================================================================================

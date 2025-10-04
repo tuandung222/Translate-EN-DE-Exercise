@@ -1,0 +1,38 @@
+# Configuration for training model WITH attention mechanism
+
+# Model configuration
+model_type: attention
+hidden_size: 512
+num_layers: 4
+dropout: 0.1
+max_length: 64
+use_residual: true  # Use residual connections with layer normalization
+
+# Training configuration
+n_epochs: 1
+batch_size: 1024  
+learning_rate: 0.0002
+max_grad_norm: 1.25
+
+# Mixed Precision configuration
+use_amp: true
+amp_dtype: bfloat16  # Options: float16, bfloat16, float32
+
+# Data configuration
+data_source: local
+num_workers: 16
+
+# Evaluation configuration
+eval_every: 1000
+print_every: 100
+
+# Checkpoint configuration
+save_dir: checkpoints_attention
+
+# Logging configuration
+wandb_project: translation-de-en
+wandb_run_name: attention
+
+# Seed
+seed: 123
+

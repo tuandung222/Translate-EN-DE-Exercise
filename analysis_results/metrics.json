@@ -1,0 +1,14 @@
+{
+  "no_attention": {
+    "loss": 5.184,
+    "perplexity": 178.4029,
+    "accuracy": 0.0456,
+    "bleu": 0.004
+  },
+  "with_attention": {
+    "loss": 4.2613,
+    "perplexity": 70.9048,
+    "accuracy": 0.1495,
+    "bleu": 0.0223
+  }
+}
